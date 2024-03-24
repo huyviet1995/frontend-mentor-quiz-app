@@ -1,8 +1,5 @@
 <template>
-    <card-item>
-        <img :src="icon" width="32" alt="Category Icon" />
-        <h2>{{ title }}</h2>
-    </card-item>
+    <card-item :title="title" :icon="icon" />
 </template>
 <script>
 import CardItem from "@/components/CardItem.vue";

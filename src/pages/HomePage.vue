@@ -30,19 +30,19 @@ export default {
         return {
             categories: [
                 {
-                    icon: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
+                    icon: "/images/icon-html.svg",
                     title: "HTML",
                 },
                 {
-                    icon: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
+                    icon: "/images/icon-css.svg",
                     title: "CSS",
                 },
                 {
-                    icon: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
+                    icon: "/images/icon-js.svg",
                     title: "Javascript",
                 },
                 {
-                    icon: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
+                    icon: "/images/icon-accessibility.svg",
                     title: "Accessibility",
                 },
             ],

@@ -1,12 +1,27 @@
 <template>
     <div class="container flex flex-row gap-4 items-center rounded-lg">
-      <slot></slot>
+        <img :src="icon" :width="32" alt="alt">
+        <h2>{{ title }}</h2>
     </div>
   </template>
   
   <script>
   export default {
-    name: 'CardItem'
+    name: 'CardItem',
+    props: {
+        title: {
+            type: String,
+            required: true
+        },
+        icon: {
+            type: String,
+            required: true
+        },
+        alt: {
+            type: String,
+            required: false
+        }
+    }
   }
   </script>
   
