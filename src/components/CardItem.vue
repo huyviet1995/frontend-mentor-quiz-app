@@ -1,6 +1,7 @@
 <template>
     <div class="container flex flex-row gap-4 items-center rounded-lg">
-        <img :src="icon" :width="32" alt="alt">
+        <img v-if="icon" :src="icon" :width="32" alt="alt">
+        <slot v-else name="icon" />
         <h2>{{ title }}</h2>
     </div>
   </template>
@@ -15,7 +16,7 @@
         },
         icon: {
             type: String,
-            required: true
+            required: false
         },
         alt: {
             type: String,
