@@ -1,10 +1,13 @@
 <template>
     <div class="page-container flex flex-row justify-between mx-auto">
-        <div class="left-column">
-            <p class="mb-5">Question {{ currentQuestion }} out of {{ totalQuestions }}</p>
-            <h1 class="mb-5">
-                {{ question.title }}
-            </h1>
+        <div class="left-column flex justify-between flex-col">
+            <div>
+                <p class="mb-5">Question {{ currentQuestion }} out of {{ totalQuestions }}</p>
+                <h1 class="mb-5">
+                    {{ question.title }}
+                </h1>
+            </div>
+            <progress :value="currentQuestion" :max="totalQuestions" class="rounded-lg"></progress>
         </div>
         <div class="right-column">
             <ul class="question-list flex gap-4 flex-col">
@@ -113,4 +116,24 @@ export default {
     color: var(--grey-navy);
 }
 /* Add your styles here */
+.page-container progress {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4px;
+    gap: 8px;
+    margin: 0 auto;
+    width: 100%;
+    background: #FFFFFF;
+}
+
+.page-container progress::-webkit-progress-value {
+    background: var(--purple);
+    border-radius: 0.5rem;
+}
+
+.page-container progress::-webkit-progress-bar {
+    background: #FFFFFF;
+}
 </style>

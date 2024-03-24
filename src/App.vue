@@ -22,6 +22,7 @@ export default {
     --box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
     --background: #F4F6FA;
     --grey-navy: #626C7F;
+    --purple: #A729F5;
 }
 #app {
     font-family: 'Rubik', Avenir, Helvetica, Arial, sans-serif;
