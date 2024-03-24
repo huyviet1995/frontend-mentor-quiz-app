@@ -1,5 +1,5 @@
 <template>
-    <card-item :title="title" :icon="icon" />
+    <card-item :title="title" :icon="icon" @click="onClick" />
 </template>
 <script>
 import CardItem from "@/components/CardItem.vue";
@@ -15,7 +15,16 @@ export default {
             type: String,
             required: true,
         },
+        slug: {
+            type: String,
+            required: true,
+        }
     },
+    methods: {
+        onClick() {
+            this.$router.push(`${this.slug}/questions/1`);
+        },  
+    }
 };
 </script>
 

@@ -12,7 +12,11 @@
         <div class="">
             <ul class="subject-list flex gap-4 flex-col">
                 <li v-for="category in categories" :key="category.title">
-                    <category-item :icon="category.icon" :title="category.title" />
+                    <category-item 
+                        :icon="category.icon" 
+                        :title="category.title" 
+                        :slug="category.slug"
+                    />
                 </li>
             </ul>
         </div>
@@ -32,18 +36,22 @@ export default {
                 {
                     icon: "/images/icon-html.svg",
                     title: "HTML",
+                    slug: 'html',
                 },
                 {
                     icon: "/images/icon-css.svg",
                     title: "CSS",
+                    slug: 'css',
                 },
                 {
                     icon: "/images/icon-js.svg",
                     title: "Javascript",
+                    slug: 'javascript'
                 },
                 {
                     icon: "/images/icon-accessibility.svg",
                     title: "Accessibility",
+                    slug: 'accessibility'
                 },
             ],
         }
