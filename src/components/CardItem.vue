@@ -1,5 +1,5 @@
 <template>
-    <div class="container flex flex-row gap-4 items-center rounded-lg">
+    <div class="container flex flex-row gap-4 items-center rounded-lg cursor-pointer" @click="onClick">
         <img v-if="icon" :src="icon" :width="32" alt="alt">
         <slot v-else name="icon" />
         <h2>{{ title }}</h2>
@@ -20,6 +20,10 @@
         },
         alt: {
             type: String,
+            required: false
+        },
+        onClick: {
+            type: Function,
             required: false
         }
     }

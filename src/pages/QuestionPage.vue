@@ -2,23 +2,37 @@
     <div class="page-container flex flex-row justify-between mx-auto">
         <div class="left-column flex justify-between flex-col">
             <div>
-                <p class="mb-5">Question {{ currentQuestion }} out of {{ totalQuestions }}</p>
+                <p class="mb-5">
+                    Question {{ currentQuestion }} out of {{ totalQuestions }}
+                </p>
                 <h1 class="mb-5">
                     {{ question.title }}
                 </h1>
             </div>
-            <progress :value="currentQuestion" :max="totalQuestions" class="rounded-lg"></progress>
+            <progress
+                :value="currentQuestion"
+                :max="totalQuestions"
+                class="rounded-lg"
+            ></progress>
         </div>
         <div class="right-column">
             <ul class="question-list flex gap-4 flex-col">
                 <li v-for="(choice, index) in question.options" :key="choice">
-                    <card-item :title="choice">
+                    <card-item :title="choice" :onClick="() => onAnswer(index)">
                         <template v-slot:icon>
-                            <div class="letter">{{ letters[index] }}</div>
+                            <div
+                                class="letter"
+                                :class="{ selected: selectedAnswer === index }"
+                            >
+                                {{ letters[index] }}
+                            </div>
                         </template>
                     </card-item>
                 </li>
             </ul>
+            <button class="mt-4" :disabled="selectedAnswer === null" @click="onSubmit">
+                Submit Answer
+            </button>
         </div>
     </div>
 </template>
@@ -33,24 +47,6 @@ export default {
         title: {
             type: String,
             required: true,
-        },
-    },
-    computed: {
-        question() {
-            const category = this.$route.params.category;
-            const id = Number(this.$route.params.id);
-            return questions[category].find((question) => question.id === id);
-        },
-        totalQuestions() {
-            const category = this.$route.params.category;
-            return questions[category].length;
-        },
-        currentQuestion() {
-            const id = Number(this.$route.params.id);
-            return id;
-        },
-        letters() {
-            return ["A", "B", "C", "D"];
         },
     },
     data() {
@@ -70,7 +66,41 @@ export default {
                 },
                 // Add more questions here
             ],
+            selectedAnswer: null,
         };
+    },
+    computed: {
+        question() {
+            const category = this.$route.params.category;
+            const id = Number(this.$route.params.id);
+            return questions[category].find((question) => question.id === id);
+        },
+        totalQuestions() {
+            const category = this.$route.params.category;
+            return questions[category].length;
+        },
+        currentQuestion() {
+            const id = Number(this.$route.params.id);
+            return id;
+        },
+        letters() {
+            return ["A", "B", "C", "D"];
+        },
+    },
+    methods: {
+        onAnswer(id) {
+            this.selectedAnswer = id;
+        },
+        onSubmit() {
+            this.$router.push({
+                name: "QuestionPage",
+                params: {
+                    category: this.$route.params.category,
+                    id: this.currentQuestion + 1,
+                },
+            });
+            this.selectedAnswer = null;
+        },
     },
 };
 </script>
@@ -114,6 +144,11 @@ export default {
     line-height: 100%;
     /* identical to box height, or 28px */
     color: var(--grey-navy);
+
+    &.selected {
+        background: var(--purple);
+        color: #fff;
+    }
 }
 /* Add your styles here */
 .page-container progress {
@@ -125,7 +160,7 @@ export default {
     gap: 8px;
     margin: 0 auto;
     width: 100%;
-    background: #FFFFFF;
+    background: #ffffff;
 }
 
 .page-container progress::-webkit-progress-value {
@@ -134,6 +169,41 @@ export default {
 }
 
 .page-container progress::-webkit-progress-bar {
-    background: #FFFFFF;
+    background: #ffffff;
+}
+
+.page-container button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    gap: 8px;
+    width: 100%;
+    min-height: 92px;
+    background: var(--purple);
+    box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
+    border-radius: 24px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 100%;
+    /* identical to box height, or 28px */
+
+    color: #ffffff;
+    &[disabled] {
+        background: linear-gradient(
+                0deg,
+                rgba(255, 255, 255, 0.5),
+                rgba(255, 255, 255, 0.5)
+            ),
+            var(--purple);
+    }
 }
 </style>
