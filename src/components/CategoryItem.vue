@@ -1,12 +1,14 @@
 <template>
-    <div class="container flex flex-row gap-4 items-center rounded-lg">
+    <card-item>
         <img :src="icon" width="32" alt="Category Icon" />
         <h2>{{ title }}</h2>
-    </div>
+    </card-item>
 </template>
 <script>
+import CardItem from "@/components/CardItem.vue";
 export default {
     name: "CategoryItem",
+    components: { CardItem },
     props: {
         icon: {
             type: String,
