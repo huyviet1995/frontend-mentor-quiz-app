@@ -18,7 +18,7 @@
         <div class="right-column">
             <ul class="question-list flex gap-4 flex-col">
                 <li v-for="(choice, index) in question.options" :key="choice">
-                    <card-item :title="choice" :onClick="() => onAnswer(index)">
+                    <card-item :title="choice" :onClick="() => onAnswer(index)" :selected="selectedAnswer === index">
                         <template v-slot:icon>
                             <div
                                 class="letter"
