@@ -29,6 +29,7 @@ export default {
   min-width: 75%;
   display: flex;
   justify-content: center;
+  padding: 75px;
 }
 
 </style>
