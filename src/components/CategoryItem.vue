@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         onClick() {
-            this.$router.push(`${this.slug}/questions/1`);
+            this.$router.push(`${this.slug}/1`);
         },  
     }
 };

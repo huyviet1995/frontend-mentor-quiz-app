@@ -10,7 +10,7 @@ const routes = [
     component: HomePage
   },
   {
-    path: '/:category/questions/:id',
+    path: '/:category/:id',
     name: 'QuestionPage',
     component: QuestionPage,
   }
