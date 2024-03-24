@@ -2,11 +2,4 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-* {
-    font-family: 'Rubik';
-}
-
-:root {
-    --dark-navy: #313E51;
-}
 
