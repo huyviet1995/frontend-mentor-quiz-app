@@ -1,7 +1,7 @@
 <template>
     <div class="page-container flex flex-row justify-between mx-auto">
         <div class="left-column flex justify-between flex-col">
-            <div>
+            <div v-if="!showResult" class="title__question">
                 <p class="mb-5">
                     Question {{ currentQuestion }} out of {{ totalQuestions }}
                 </p>
@@ -9,14 +9,19 @@
                     {{ question.title }}
                 </h1>
             </div>
+            <div class="mb-5 title__result" v-else>
+                <h1>Quiz complete</h1>
+                <span>You scored...</span>
+            </div>
             <progress
+                v-if="!showResult"
                 :value="currentQuestion"
                 :max="totalQuestions"
                 class="rounded-lg"
             ></progress>
         </div>
         <div class="right-column">
-            <ul class="question-list flex gap-4 flex-col">
+            <ul class="question-list flex gap-4 flex-col" v-if="!showResult">
                 <li v-for="(choice, index) in question.options" :key="choice">
                     <card-item :title="choice" :onClick="() => onAnswer(index)" :selected="selectedAnswer === index">
                         <template v-slot:icon>
@@ -30,8 +35,16 @@
                     </card-item>
                 </li>
             </ul>
+            <div class="flex flex-col card w-full result-card items-center" v-else>
+                <div class="category">
+                    <img :src="getCategoryIcon(category)" :alt="category">
+                    <p>{{ category }}</p>
+                </div>
+                <p class="total-score">{{ 9 }}</p>
+                <p class="out-of">out of {{ totalQuestions }}</p>
+            </div>
             <button class="mt-4" :disabled="selectedAnswer === null" @click="onSubmit">
-                Submit Answer
+                {{ showResult ? 'Play again' : 'Submit Answer' }}
             </button>
         </div>
     </div>
@@ -40,6 +53,7 @@
 <script>
 import questions from "@/utils/questions.js";
 import CardItem from "@/components/CardItem.vue";
+import getCategoryIcon from "@/utils/category-icon";
 export default {
     name: "QuestionPage",
     components: { CardItem },
@@ -67,17 +81,16 @@ export default {
                 // Add more questions here
             ],
             selectedAnswer: null,
+            showResult: false,
         };
     },
     computed: {
         question() {
-            const category = this.$route.params.category;
             const id = Number(this.$route.params.id);
-            return questions[category].find((question) => question.id === id);
+            return questions[this.category].find((question) => question.id === id);
         },
         totalQuestions() {
-            const category = this.$route.params.category;
-            return questions[category].length;
+            return questions[this.category].length;
         },
         currentQuestion() {
             const id = Number(this.$route.params.id);
@@ -86,12 +99,23 @@ export default {
         letters() {
             return ["A", "B", "C", "D"];
         },
+        category() {
+            return this.$route.params.category;
+        }
     },
     methods: {
         onAnswer(id) {
             this.selectedAnswer = id;
         },
+        getCategoryIcon(category) {
+            return getCategoryIcon(category);
+        },
         onSubmit() {
+            if (this.currentQuestion === this.totalQuestions) {
+                this.showResult = true; 
+                this.selectedAnswer = null;
+                return;
+            }
             this.$router.push({
                 name: "QuestionPage",
                 params: {
@@ -109,6 +133,24 @@ export default {
 .left-column {
     max-width: 465px;
 }
+
+.title__result {
+    h1 {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 64px;
+        color: var(--dark-navy);
+    }
+
+    span {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 64px;
+        line-height: 100%;
+        color: var(--dark-navy);
+    }
+}
+
 .page-container p {
     font-style: italic;
     font-weight: 400;
@@ -117,7 +159,7 @@ export default {
     color: var(--grey-navy);
 }
 
-.page-container h1 {
+.title__question h1 {
     font-style: normal;
     font-weight: 500;
     font-size: 36px;
@@ -170,6 +212,48 @@ export default {
 
 .page-container progress::-webkit-progress-bar {
     background: #ffffff;
+}
+
+.result-card {
+    padding: 48px;
+    gap: 40px;
+    min-width: 564px;
+    height: 388px;
+    background: #FFFFFF;
+    box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
+    border-radius: 24px;
+
+    .category {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .category > p {
+        text-transform: capitalize;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 100%;
+        color: var(--dark-navy);
+    }
+
+    .total-score {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 144px;
+        line-height: 100%;
+        /* identical to box height, or 144px */
+        color: var(--dark-navy);
+    }
+    .out-of {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 150%;
+        color: var(--grey-navy);
+    }
 }
 
 .page-container button {

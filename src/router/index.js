@@ -13,7 +13,7 @@ const routes = [
     path: '/:category/:id',
     name: 'QuestionPage',
     component: QuestionPage,
-  }
+  },
 ]
 
 const router = createRouter({
