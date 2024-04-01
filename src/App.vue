@@ -18,6 +18,8 @@ export default {
   background-color: var(--background);
 }
 :root {
+    --red: #FF5C5C;
+    --green: #26D782;
     --dark-navy: #313e51;
     --box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
     --background: #F4F6FA;

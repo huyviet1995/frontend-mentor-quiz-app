@@ -23,11 +23,16 @@
         <div class="right-column">
             <ul class="question-list flex gap-4 flex-col" v-if="!showResult">
                 <li v-for="(choice, index) in question.options" :key="choice">
-                    <card-item :title="choice" :onClick="() => onAnswer(index)" :selected="selectedAnswer === index">
+                    <card-item 
+                        :title="choice" 
+                        :class="getCardItemClassName(index)"
+                        :onClick="() => onAnswer(index)" 
+                        :selected="selectedAnswer === index"
+                    >
                         <template v-slot:icon>
                             <div
                                 class="letter"
-                                :class="{ selected: selectedAnswer === index }"
+                                :class="getCardItemClassName(index)"
                             >
                                 {{ letters[index] }}
                             </div>
@@ -43,8 +48,8 @@
                 <p class="total-score">{{ currentScore }}</p>
                 <p class="out-of">out of {{ totalQuestions }}</p>
             </div>
-            <button class="mt-4" :disabled="selectedAnswer === null && !showResult" @click="onClick">
-                {{ showResult ? 'Play again' : 'Submit Answer' }}
+            <button class="mt-4" :disabled="selectedAnswer === null && !showResult && !readyToProceed" @click="onClick">
+                {{ buttonLabel }}
             </button>
         </div>
     </div>
@@ -84,6 +89,8 @@ export default {
             showResult: false,
             currentQuestion: 1,
             currentScore: 0,
+            isCorrect: null,
+            readyToProceed: false,
         };
     },
     computed: {
@@ -100,8 +107,30 @@ export default {
         category() {
             return this.$route.params.category;
         },
+        buttonLabel() {
+            if (this.showResult) {
+                return "Play again";
+            } else if (this.readyToProceed) {
+                return "Next Question";
+            } else {
+                return 'Submit Answer';
+            }
+        },
     },
     methods: {
+        getCardItemClassName(index) {
+            let className = "";
+            if (this.selectedAnswer === index) {
+                if (this.isCorrect) {
+                    className = "correct"; 
+                } else if (this.isCorrect === false ) {
+                    className = "incorrect";
+                } else {
+                    className = "selected";
+                }
+            }
+            return className;
+        },
         onAnswer(id) {
             this.selectedAnswer = id;
         },
@@ -115,18 +144,25 @@ export default {
             }
             this.onSubmit();
         },
+        onReadyForNextQuestion() {
+            this.selectedAnswer = null;
+            this.currentQuestion++;
+            this.readyToProceed = false;
+            this.isCorrect = null;
+        },
         onSubmit() {
             // Calculate the current score
             if (this.question.options[this.selectedAnswer] === this.question.answer) {
                 this.currentScore++;
+                this.isCorrect = true;
+            } else {
+                this.isCorrect = false;
             }
             if (this.currentQuestion === this.totalQuestions) {
                 this.showResult = true; 
-                this.selectedAnswer = null;
                 return;
             }
-            this.currentQuestion++;
-            this.selectedAnswer = null;
+            this.readyToProceed = true;
         },
         onPlayAgain() {
             this.$router.push({ name: "HomePage" });
@@ -136,6 +172,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.correct {
+    background: #FFFFFF;
+    border: 3px solid var(--green);
+    box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
+    border-radius: 24px;
+}
+
+.incorrect {
+    background: #FFFFFF;
+    border: 3px solid var(--red);
+    box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
+    border-radius: 24px;
+}
+
+.selected {
+    border: 2px solid var(--purple);
+}
+
 .left-column {
     max-width: 465px;
 }
@@ -195,6 +250,16 @@ export default {
 
     &.selected {
         background: var(--purple);
+        color: #fff;
+    }
+
+    &.correct {
+        background: var(--green);
+        color: #fff;
+    }
+
+    &.incorrect {
+        background: var(--red);
         color: #fff;
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <div
         class="container flex flex-row gap-4 items-center rounded-lg cursor-pointer"
-        :class="{ selected }"
+        v-bind="$attrs"
         @click="onClick"
     >
         <img v-if="icon" :src="icon" :width="32" alt="alt" />
@@ -28,10 +28,6 @@ export default {
         },
         onClick: {
             type: Function,
-            required: false,
-        },
-        selected: {
-            type: Boolean,
             required: false,
         },
     },
@@ -68,7 +64,4 @@ export default {
     background: #fff;
 }
 
-.selected {
-    border: 2px solid var(--purple);
-}
 </style>
