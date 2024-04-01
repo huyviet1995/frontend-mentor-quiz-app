@@ -40,7 +40,7 @@
                     <img :src="getCategoryIcon(category)" :alt="category">
                     <p>{{ category }}</p>
                 </div>
-                <p class="total-score">{{ 9 }}</p>
+                <p class="total-score">{{ currentScore }}</p>
                 <p class="out-of">out of {{ totalQuestions }}</p>
             </div>
             <button class="mt-4" :disabled="selectedAnswer === null" @click="onSubmit">
@@ -83,6 +83,7 @@ export default {
             selectedAnswer: null,
             showResult: false,
             currentQuestion: 1,
+            currentScore: 0,
         };
     },
     computed: {
@@ -98,7 +99,7 @@ export default {
         },
         category() {
             return this.$route.params.category;
-        }
+        },
     },
     methods: {
         onAnswer(id) {
@@ -108,6 +109,10 @@ export default {
             return getCategoryIcon(category);
         },
         onSubmit() {
+            // Calculate the current score
+            if (this.question.options[this.selectedAnswer] === this.question.answer) {
+                this.currentScore++;
+            }
             if (this.currentQuestion === this.totalQuestions) {
                 this.showResult = true; 
                 this.selectedAnswer = null;
@@ -115,6 +120,7 @@ export default {
             }
             this.currentQuestion++;
             this.selectedAnswer = null;
+
         },
     },
 };
@@ -205,12 +211,16 @@ export default {
     background: #ffffff;
 }
 
+.result-card * {
+    background-color: #fff;
+}
+
 .result-card {
     padding: 48px;
     gap: 40px;
     min-width: 564px;
     height: 388px;
-    background: #FFFFFF;
+    background-color: #FFFFFF;
     box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
     border-radius: 24px;
 
