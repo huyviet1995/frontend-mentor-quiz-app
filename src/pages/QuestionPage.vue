@@ -43,7 +43,7 @@
                 <p class="total-score">{{ currentScore }}</p>
                 <p class="out-of">out of {{ totalQuestions }}</p>
             </div>
-            <button class="mt-4" :disabled="selectedAnswer === null" @click="onSubmit">
+            <button class="mt-4" :disabled="selectedAnswer === null && !showResult" @click="onClick">
                 {{ showResult ? 'Play again' : 'Submit Answer' }}
             </button>
         </div>
@@ -108,6 +108,13 @@ export default {
         getCategoryIcon(category) {
             return getCategoryIcon(category);
         },
+        onClick() {
+            if (this.showResult) {
+                this.onPlayAgain();
+                return;
+            }
+            this.onSubmit();
+        },
         onSubmit() {
             // Calculate the current score
             if (this.question.options[this.selectedAnswer] === this.question.answer) {
@@ -120,8 +127,10 @@ export default {
             }
             this.currentQuestion++;
             this.selectedAnswer = null;
-
         },
+        onPlayAgain() {
+            this.$router.push({ name: "HomePage" });
+        }
     },
 };
 </script>
