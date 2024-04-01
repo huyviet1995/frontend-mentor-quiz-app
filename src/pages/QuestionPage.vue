@@ -82,19 +82,16 @@ export default {
             ],
             selectedAnswer: null,
             showResult: false,
+            currentQuestion: 1,
         };
     },
     computed: {
         question() {
-            const id = Number(this.$route.params.id);
+            const id = Number(this.currentQuestion);
             return questions[this.category].find((question) => question.id === id);
         },
         totalQuestions() {
             return questions[this.category].length;
-        },
-        currentQuestion() {
-            const id = Number(this.$route.params.id);
-            return id;
         },
         letters() {
             return ["A", "B", "C", "D"];
@@ -116,13 +113,7 @@ export default {
                 this.selectedAnswer = null;
                 return;
             }
-            this.$router.push({
-                name: "QuestionPage",
-                params: {
-                    category: this.$route.params.category,
-                    id: this.currentQuestion + 1,
-                },
-            });
+            this.currentQuestion++;
             this.selectedAnswer = null;
         },
     },
