@@ -65,6 +65,7 @@ export default {
     flex: none;
     order: 1;
     flex-grow: 0;
+    background: #fff;
 }
 
 .selected {
