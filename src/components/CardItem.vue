@@ -7,6 +7,9 @@
         <img v-if="icon" :src="icon" :width="32" alt="alt" />
         <slot v-else name="icon" />
         <h2>{{ title }}</h2>
+        <div class="append-icon">
+            <slot name="appendIcon" />
+        </div>
     </div>
 </template>
 
@@ -34,7 +37,7 @@ export default {
             type: Boolean,
             required: false,
             default: false,
-        }
+        },
     },
     methods: {
         onCardClick() {
@@ -47,7 +50,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .container {
     box-sizing: border-box;
     display: flex;
@@ -72,9 +75,18 @@ export default {
     line-height: 100%;
     color: var(--dark-navy);
     flex: none;
-    order: 1;
     flex-grow: 0;
     background: #fff;
+}
+
+.container .append-icon {
+    align-self: center;
+    margin-left: auto;
+    background-color: #fff;
+}
+
+.append-icon * {
+    background-color: #fff;
 }
 
 </style>

@@ -38,6 +38,9 @@
                                 {{ letters[index] }}
                             </div>
                         </template>
+                        <template v-slot:appendIcon v-if="questionAnswered && getCardItemIcon(index)">
+                            <img :src="getCardItemIcon(index)" alt="append-icon">
+                        </template>
                     </card-item>
                 </li>
             </ul>
@@ -132,6 +135,16 @@ export default {
                 }
             }
             return className;
+        },
+        getCardItemIcon(index) {
+            if (this.selectedAnswer !== index) {
+                return undefined;
+            }
+            if (this.isCorrect === true) {
+                return "/images/icon-correct.svg";
+            } else if (this.isCorrect === false) {
+                return "/images/icon-incorrect.svg";
+            }
         },
         onAnswer(id) {
             this.selectedAnswer = id;
@@ -368,5 +381,9 @@ export default {
             ),
             var(--purple);
     }
+}
+
+.page-container img {
+    background-color: #fff;
 }
 </style>
