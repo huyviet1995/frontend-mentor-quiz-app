@@ -28,6 +28,7 @@
                         :class="getCardItemClassName(index)"
                         :onClick="() => onAnswer(index)" 
                         :selected="selectedAnswer === index"
+                        :disabled="questionAnswered"
                     >
                         <template v-slot:icon>
                             <div
@@ -91,6 +92,7 @@ export default {
             currentScore: 0,
             isCorrect: null,
             readyToProceed: false,
+            questionAnswered: false,
         };
     },
     computed: {
@@ -149,6 +151,7 @@ export default {
             this.currentQuestion++;
             this.readyToProceed = false;
             this.isCorrect = null;
+            this.questionAnswered = false;
         },
         onSubmit() {
             // Calculate the current score
@@ -162,6 +165,7 @@ export default {
                 this.showResult = true; 
                 return;
             }
+            this.questionAnswered = true;
             this.readyToProceed = true;
         },
         onPlayAgain() {

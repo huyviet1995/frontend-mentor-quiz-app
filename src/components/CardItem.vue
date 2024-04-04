@@ -2,7 +2,7 @@
     <div
         class="container flex flex-row gap-4 items-center rounded-lg cursor-pointer"
         v-bind="$attrs"
-        @click="onClick"
+        @click="onCardClick"
     >
         <img v-if="icon" :src="icon" :width="32" alt="alt" />
         <slot v-else name="icon" />
@@ -30,8 +30,21 @@ export default {
             type: Function,
             required: false,
         },
+        disabled: {
+            type: Boolean,
+            required: false,
+            default: false,
+        }
     },
+    methods: {
+        onCardClick() {
+            if (!this.disabled) {
+                this.onClick();
+            }
+        }
+    }
 };
+
 </script>
 
 <style scoped>
