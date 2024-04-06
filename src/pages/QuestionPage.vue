@@ -1,6 +1,6 @@
 <template>
     <container class="page-container flex lg:flex-row md:gap-16 flex-col justify-between mx-auto">
-        <div class="left-column flex justify-between flex-col">
+        <div class="left-column flex justify-between flex-col md:gap-6">
             <div v-if="!showResult" class="title__question">
                 <p class="mb-2 md:mb-5">
                     Question {{ currentQuestion }} out of {{ totalQuestions }}
@@ -9,9 +9,9 @@
                     {{ question.title }}
                 </h1>
             </div>
-            <div class="mb-5" v-else>
+            <div v-else>
                 <h1>
-                    Quiz complete
+                    <span>Quiz complete</span>
                     <span>You scored...</span>
                 </h1>
             </div>

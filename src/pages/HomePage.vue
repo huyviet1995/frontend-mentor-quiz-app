@@ -4,8 +4,7 @@
         <div class="">
             <h1 class="mb-5">
                 <span>Welcome to the</span>
-                <br/>
-                Frontend Quiz!
+                <span>Frontend Quiz!</span>
             </h1>
             <p>Pick a subject to get started</p>
         </div>

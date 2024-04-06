@@ -58,25 +58,19 @@ export default {
     justify-content: center;
     padding: 75px;
     h1 {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 64px;
-        line-height: 100%;
-        color: #626c7f;
-        flex: none;
-        order: 1;
-        flex-grow: 0;
-    }
-
-    span {
-        font-style: normal;
-        font-weight: 300;
-        font-size: 64px;
-        line-height: 100%;
         color: var(--dark-navy);
-        flex: none;
-        order: 0;
-        flex-grow: 0;
+        span {
+            display: block;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 64px;
+            line-height: 100%;
+        }
+        span:last-child {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 64px;
+        }
     }
 }
 
@@ -98,6 +92,7 @@ export default {
             line-height: 100%;
             color: var(--dark-navy);
             span {
+                display: block;
                 font-weight: 300;
                 font-size: 40px;
             }
