@@ -80,11 +80,13 @@ export default {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     #app {
         padding: 0px;
     }
+}
 
+@media screen and (max-width: 768px) {
     .page-container {
         gap: 32px;
         padding-top: 32px;

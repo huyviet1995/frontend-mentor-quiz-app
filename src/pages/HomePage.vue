@@ -1,6 +1,6 @@
 
 <template>
-    <container class="page-container flex md:flex-row flex-col justify-between mx-auto">
+    <container class="page-container flex lg:flex-row flex-col justify-between mx-auto md:gap-16">
         <div class="">
             <h1 class="mb-5">
                 <span>Welcome to the</span>
@@ -10,7 +10,7 @@
             <p>Pick a subject to get started</p>
         </div>
         <div class="">
-            <ul class="subject-list flex gap-4 flex-col">
+            <ul class="subject-list flex gap-4 flex-col md:gap-6">
                 <li v-for="category in categories" :key="category.title">
                     <category-item 
                         :icon="category.icon" 

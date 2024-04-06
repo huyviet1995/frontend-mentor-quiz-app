@@ -89,15 +89,24 @@ container .append-icon {
     background-color: #fff;
 }
 
+@media screen and (max-width: 1024px) {
+    container.container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 12px;
+        gap: 32px;
+        height: 80px;
+        border-radius: 12px;
+    } 
+}
+
 @media screen and (max-width: 768px) {
     container {
-        width: 100% !important;
-        height: 64px !important;
-        padding: 12px;
         gap: 16px;
         background: #FFFFFF;
         box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
-        border-radius: 12px;
         h2 {
             font-style: normal;
             font-weight: 500;
