@@ -74,7 +74,7 @@ export default {
       padding-right: 24px;
       h1 {
           font-style: normal;
-          font-size: 40px !important;
+          font-size: 40px;
           line-height: 100%;
           color: var(--dark-navy);
           span {
