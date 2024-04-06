@@ -209,14 +209,12 @@ export default {
     background: #FFFFFF;
     border: 3px solid var(--green);
     box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
-    border-radius: 24px;
 }
 
 .incorrect {
     background: #FFFFFF;
     border: 3px solid var(--red);
     box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
-    border-radius: 24px;
 }
 
 .selected {
@@ -261,8 +259,6 @@ export default {
 }
 
 .page-container .letter {
-    min-width: 56px;
-    min-height: 56px;
     background: var(--background);
     border-radius: 8px;
     display: flex;
@@ -430,6 +426,11 @@ export default {
             font-size: 20px;
             line-height: 120%;
         }
+    }
+
+    container.page-container .letter {
+        width: 40px;
+        height: 40px;
     }
 }
 

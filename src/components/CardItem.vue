@@ -93,6 +93,11 @@ container .append-icon {
     container {
         width: 100% !important;
         height: 64px !important;
+        padding: 12px;
+        gap: 16px;
+        background: #FFFFFF;
+        box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
+        border-radius: 12px;
         h2 {
             font-style: normal;
             font-weight: 500;
