@@ -1,6 +1,6 @@
 
 <template>
-    <div class="page-container flex flex-row justify-between mx-auto">
+    <container class="page-container flex md:flex-row flex-col justify-between mx-auto">
         <div class="">
             <h1 class="mb-5">
                 <span>Welcome to the</span>
@@ -20,7 +20,7 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </container>
 </template>
 
 <script>
@@ -95,4 +95,23 @@ p {
     order: 1;
     flex-grow: 0;
 }
+
+@media screen and (max-width: 768px) {
+    container {
+        padding-top: 32px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    container h1 {
+        font-style: normal;
+        font-size: 40px !important;
+        line-height: 100%;
+        color: var(--dark-navy);
+        span {
+            font-weight: 300;
+            font-size: 40px;
+        }
+    }
+}
+
 </style>

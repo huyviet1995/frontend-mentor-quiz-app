@@ -1,5 +1,5 @@
 <template>
-    <div class="page-container flex flex-row justify-between mx-auto">
+    <container class="page-container flex md:flex-row flex-col justify-between mx-auto">
         <div class="left-column flex justify-between flex-col">
             <div v-if="!showResult" class="title__question">
                 <p class="mb-5">
@@ -59,7 +59,7 @@
                 <img v-if="error" src="/images/icon-error.svg" alt="icon-error" class="mr-4">{{ error }}
             </p>
         </div>
-    </div>
+    </container>
 </template>
 
 <script>
@@ -414,4 +414,13 @@ export default {
         background-color: unset;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        padding: 0px !important;
+    }
+}
+
 </style>

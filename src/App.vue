@@ -41,4 +41,13 @@ export default {
   padding: 75px;
 }
 
+@media screen and (max-width: 768px) {
+  #app {
+    padding: 0px;
+  }
+  .page-container {
+    padding: 0px;
+  }
+}
+
 </style>
