@@ -97,11 +97,6 @@ p {
 }
 
 @media screen and (max-width: 768px) {
-    container {
-        padding-top: 32px;
-        padding-left: 24px;
-        padding-right: 24px;
-    }
     container h1 {
         font-style: normal;
         font-size: 40px !important;

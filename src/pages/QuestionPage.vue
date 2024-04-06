@@ -2,10 +2,10 @@
     <container class="page-container flex md:flex-row flex-col justify-between mx-auto">
         <div class="left-column flex justify-between flex-col">
             <div v-if="!showResult" class="title__question">
-                <p class="mb-5">
+                <p class="mb-2 md:mb-5">
                     Question {{ currentQuestion }} out of {{ totalQuestions }}
                 </p>
-                <h1 class="mb-5">
+                <h1 class="mb-2 md:mb-5">
                     {{ question.title }}
                 </h1>
             </div>
@@ -416,10 +416,20 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-    .page-container {
-        display: flex;
-        flex-direction: column;
-        padding: 0px !important;
+    /* Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text? */
+    container .title__question {
+        p {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 150%;
+        }
+        h1 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 120%;
+        }
     }
 }
 

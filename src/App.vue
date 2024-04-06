@@ -43,11 +43,13 @@ export default {
 
 @media screen and (max-width: 768px) {
   #app {
-    padding: 0px;
+      padding: 0px;
   }
   .page-container {
-    padding: 0px;
-    gap: 32px;
+      gap: 32px;
+      padding-top: 32px;
+      padding-left: 24px;
+      padding-right: 24px;
   }
 }
 
