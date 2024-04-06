@@ -1,6 +1,9 @@
 <template>
-    <div>
-        <header-component :category="currentCategory" />
+    <div :class="{ 'dark': darkMode }">
+        <header-component 
+            :category="currentCategory" 
+            @update:dark-mode="handleUpdateDarkmode"
+        />
         <router-view></router-view>
     </div>
 </template>
@@ -13,11 +16,15 @@ export default {
     data() {
         return {
             currentCategory: null,
+            darkMode: false,
         }
     },
     methods: {
         handleUpdateCategory(category) {
             this.currentCategory = category;
+        },
+        handleUpdateDarkmode(checked) {
+            this.darkMode = checked; 
         }
     },
     watch: {
@@ -43,6 +50,10 @@ export default {
     --background: #f4f6fa;
     --grey-navy: #626c7f;
     --purple: #a729f5;
+}
+
+.dark {
+    --background: #1e1e1e;
 }
 #app {
     font-family: "Rubik", Avenir, Helvetica, Arial, sans-serif;

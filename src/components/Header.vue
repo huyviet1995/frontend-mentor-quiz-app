@@ -10,6 +10,7 @@
         <switch-component
             class="switch"
             v-model="toggle"
+            @change.native="handleChange"
             hide-details
             color="#A729F5"
             inset
@@ -48,6 +49,11 @@ export default {
         },
         categoryTitle() {
             return categories.find(category => category.slug === this.category)?.title;
+        }
+    },
+    methods: {
+        handleChange(checked) {
+            this.$emit("update:dark-mode", checked);
         }
     }
 };

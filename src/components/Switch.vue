@@ -7,7 +7,8 @@
             <input
                 type="checkbox"
                 class="sr-only"
-                @change="handleCheckboxChange"
+                v-model="isChecked"
+                @change.stop="$emit('change', isChecked)"
             />
             <div class="block h-8 rounded-full box bg-purple-500 w-14"></div>
             <div
@@ -26,11 +27,6 @@ export default {
         return {
             isChecked: false,
         };
-    },
-    methods: {
-        handleCheckboxChange() {
-            this.isChecked = !this.isChecked;
-        },
     },
 };
 </script>
