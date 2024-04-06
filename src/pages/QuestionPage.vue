@@ -9,9 +9,11 @@
                     {{ question.title }}
                 </h1>
             </div>
-            <div class="mb-5 title__result" v-else>
-                <h1>Quiz complete</h1>
-                <span>You scored...</span>
+            <div class="mb-5" v-else>
+                <h1>
+                    Quiz complete
+                    <span>You scored...</span>
+                </h1>
             </div>
             <progress
                 v-if="!showResult"
@@ -412,22 +414,6 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-    /* Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text? */
-    container .title__question {
-        p {
-            font-style: italic;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 150%;
-        }
-        h1 {
-            font-style: normal;
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 120%;
-        }
-    }
-
     container.page-container .letter {
         width: 40px;
         height: 40px;
@@ -445,6 +431,32 @@ export default {
         font-weight: 500;
         font-size: 18px;
         line-height: 100%;
+    }
+
+    container .result-card {
+        min-width: inherit;
+        padding: 32px;
+        gap: 16px;
+        height: 242px;
+        background: #FFFFFF;
+        box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
+        border-radius: 12px;
+
+        p {
+            font-size: 18px;
+            line-height: 100%;
+        }
+
+        .total-score {
+            font-weight: 500;
+            font-size: 88px;
+        }
+
+        .out-of {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+        }
     }
 }
 
