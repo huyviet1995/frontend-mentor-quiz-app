@@ -98,7 +98,7 @@ container .append-icon {
         padding: 12px;
         gap: 32px;
         height: 80px;
-        border-radius: 12px;
+        border-radius: 24px;
     } 
 }
 

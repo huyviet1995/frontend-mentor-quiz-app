@@ -1,5 +1,5 @@
 <template>
-    <container class="page-container flex md:flex-row flex-col justify-between mx-auto">
+    <container class="page-container flex lg:flex-row md:gap-16 flex-col justify-between mx-auto">
         <div class="left-column flex justify-between flex-col">
             <div v-if="!showResult" class="title__question">
                 <p class="mb-2 md:mb-5">
@@ -23,7 +23,7 @@
             ></progress>
         </div>
         <div class="right-column">
-            <ul class="question-list flex gap-4 flex-col" v-if="!showResult">
+            <ul class="question-list flex gap-4 md:gap-6 flex-col" v-if="!showResult">
                 <li v-for="(choice, index) in question.options" :key="choice">
                     <card-item 
                         :title="choice" 
@@ -54,7 +54,7 @@
                 <p class="total-score">{{ currentScore }}</p>
                 <p class="out-of">out of {{ totalQuestions }}</p>
             </div>
-            <button class="mt-4" @click="onClick">
+            <button class="mt-6" @click="onClick">
                 {{ buttonLabel }}
             </button>
             <p v-if="selectedAnswer === null && !showResult && !readyToProceed" class="error mt-4">
@@ -410,6 +410,13 @@ export default {
     img {
         display: inline-block;
         background-color: unset;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .page-container .left-column {
+        width: 100%;
+        max-width: unset;
     }
 }
 
