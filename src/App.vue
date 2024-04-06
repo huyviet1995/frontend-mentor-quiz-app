@@ -39,6 +39,28 @@ export default {
   display: flex;
   justify-content: center;
   padding: 75px;
+  h1 {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 64px;
+      line-height: 100%;
+      color: #626c7f;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+  }
+
+  span {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 64px;
+      line-height: 100%;
+      color: var(--dark-navy);
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+  }
+
 }
 
 @media screen and (max-width: 768px) {

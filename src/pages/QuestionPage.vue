@@ -268,7 +268,8 @@ export default {
     height: 28px;
     left: 38px;
     top: 34px;
-
+    width: 56px;
+    height: 56px;
     /* Heading S */
     font-weight: 500;
     font-size: 28px;
@@ -430,6 +431,9 @@ export default {
     container.page-container .letter {
         width: 40px;
         height: 40px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px !important;
     }
 
     container.page-container button {

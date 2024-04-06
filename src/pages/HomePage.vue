@@ -60,40 +60,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h1 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 64px;
-    line-height: 100%;
-    color: #626c7f;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-}
-
-span {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 64px;
-    line-height: 100%;
-    color: var(--dark-navy);
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-
 p {
     /* Pick a subject to get started. */
     font-style: italic;
     font-weight: 400;
     font-size: 20px;
     line-height: 150%;
-    /* identical to box height, or 30px */
-    color: #626c7f;
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+    color: var(--grey-navy);
 }
 
 @media screen and (max-width: 768px) {
