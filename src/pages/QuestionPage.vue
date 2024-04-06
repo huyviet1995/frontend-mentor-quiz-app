@@ -52,9 +52,12 @@
                 <p class="total-score">{{ currentScore }}</p>
                 <p class="out-of">out of {{ totalQuestions }}</p>
             </div>
-            <button class="mt-4" :disabled="selectedAnswer === null && !showResult && !readyToProceed" @click="onClick">
+            <button class="mt-4" @click="onClick">
                 {{ buttonLabel }}
             </button>
+            <p v-if="selectedAnswer === null && !showResult && !readyToProceed" class="error mt-4">
+                <img v-if="error" src="/images/icon-error.svg" alt="icon-error" class="mr-4">{{ error }}
+            </p>
         </div>
     </div>
 </template>
@@ -96,6 +99,7 @@ export default {
             isCorrect: null,
             readyToProceed: false,
             questionAnswered: false,
+            error: null,
         };
     },
     computed: {
@@ -150,6 +154,7 @@ export default {
         },
         onAnswer(id) {
             this.selectedAnswer = id;
+            this.error = null;
         },
         getCategoryIcon(category) {
             return getCategoryIcon(category);
@@ -178,6 +183,10 @@ export default {
         },
         onSubmit() {
             // Calculate the current score
+            if (this.selectedAnswer === null) {
+                this.error = "Please select an answer";
+                return;
+            }
             if (this.correctAnswerId === this.selectedAnswer) {
                 this.currentScore++;
                 this.isCorrect = true;
@@ -391,5 +400,18 @@ export default {
 
 .page-container img {
     background-color: #fff;
+}
+
+.page-container .error {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 150%;
+    color: var(--red);
+    text-align: center;
+    img {
+        display: inline-block;
+        background-color: unset;
+    }
 }
 </style>
