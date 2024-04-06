@@ -7,7 +7,8 @@ const routes = [
   {
     path: '/',
     name: 'HomePage',
-    component: HomePage
+    component: HomePage,
+    meta: { category: null }
   },
   {
     path: '/:category/:id',

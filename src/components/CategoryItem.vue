@@ -18,13 +18,12 @@ export default {
         slug: {
             type: String,
             required: true,
+        },
+        onClick: {
+            type: Function,
+            required: true,
         }
     },
-    methods: {
-        onClick() {
-            this.$router.push(`${this.slug}/1`);
-        },  
-    }
 };
 </script>
 

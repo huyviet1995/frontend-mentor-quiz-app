@@ -67,7 +67,7 @@
 <script>
 import questions from "@/utils/questions.js";
 import CardItem from "@/components/CardItem.vue";
-import getCategoryIcon from "@/utils/category-icon";
+import { getCategoryIcon } from "@/utils/category";
 export default {
     name: "QuestionPage",
     components: { CardItem },
@@ -110,7 +110,7 @@ export default {
             return questions[this.category].find((question) => question.id === id);
         },
         totalQuestions() {
-            return questions[this.category].length;
+            return questions?.[this.category]?.length;
         },
         letters() {
             return ["A", "B", "C", "D"];

@@ -16,6 +16,7 @@
                         :icon="category.icon" 
                         :title="category.title" 
                         :slug="category.slug"
+                        :onClick="() => onSelectCategory(category.slug)"
                     />
                 </li>
             </ul>
@@ -26,34 +27,23 @@
 <script>
 
 import CategoryItem from "@/components/CategoryItem.vue";
+import { categories } from "@/utils/category";
 
 export default {
     name: "HomePage",
     components: { CategoryItem },
     data() {
         return {
-            categories: [
-                {
-                    icon: "/images/icon-html.svg",
-                    title: "HTML",
-                    slug: 'html',
-                },
-                {
-                    icon: "/images/icon-css.svg",
-                    title: "CSS",
-                    slug: 'css',
-                },
-                {
-                    icon: "/images/icon-js.svg",
-                    title: "Javascript",
-                    slug: 'javascript'
-                },
-                {
-                    icon: "/images/icon-accessibility.svg",
-                    title: "Accessibility",
-                    slug: 'accessibility'
-                },
-            ],
+            categories
+        }
+    },
+    methods: {
+        onSelectCategory(slug) {
+            this.$emit('update:category', slug);
+            this.$router.push({ 
+                path: `${slug}/1`,
+                meta: { category: slug }
+            });
         }
     }
 };
@@ -70,16 +60,6 @@ p {
 }
 
 @media screen and (max-width: 768px) {
-    container h1 {
-        font-style: normal;
-        font-size: 40px !important;
-        line-height: 100%;
-        color: var(--dark-navy);
-        span {
-            font-weight: 300;
-            font-size: 40px;
-        }
-    }
     container p {
         font-style: italic;
         font-weight: 400;

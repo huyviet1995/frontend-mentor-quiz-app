@@ -1,7 +1,12 @@
 <template>
     <header
-        class="flex justify-end items-center p-4"
+        class="flex items-center p-4"
+        :class="{'justify-end': !category, 'justify-between': category}"
     >
+        <nav v-if="category" class="flex flex-row gap-6 items-center">
+            <img :src="categoryIcon" alt="">
+            <h1>{{ categoryTitle }}</h1>
+        </nav>
         <switch-component
             class="switch"
             v-model="toggle"
@@ -21,19 +26,49 @@
 
 <script>
 import SwitchComponent from "@/components/Switch.vue";
+import { getCategoryIcon, categories } from "@/utils/category";
 export default {
     name: "HeaderComponent",
     components: { SwitchComponent },
+    props: {
+        category: {
+            type: String,
+            required: true,
+            default: null,
+        }
+    },
     data() {
         return {
             toggle: false,
         };
     },
+    computed: {
+        categoryIcon() {
+            return getCategoryIcon(this.category);
+        },
+        categoryTitle() {
+            return categories.find(category => category.slug === this.category)?.title;
+        }
+    }
 };
 </script>
 
 <style scoped>
 header {
     padding: 24px 75px;
+}
+
+nav h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 100%;
+    color: var(--dark-navy);
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 24px 24px;
+    }
 }
 </style>
