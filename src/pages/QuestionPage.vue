@@ -368,7 +368,6 @@ export default {
     padding: 32px;
     gap: 8px;
     width: 100%;
-    min-height: 92px;
     background: var(--purple);
     box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
     border-radius: 24px;
@@ -431,6 +430,17 @@ export default {
     container.page-container .letter {
         width: 40px;
         height: 40px;
+    }
+
+    container.page-container button {
+        width: 100%;
+        height: 56px;
+        box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
+        border-radius: 12px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 100%;
     }
 }
 
