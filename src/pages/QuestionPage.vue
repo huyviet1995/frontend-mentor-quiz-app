@@ -11,7 +11,7 @@
             </div>
             <div v-else>
                 <h1>
-                    <span>Quiz complete</span>
+                    <span class="mb-1">Quiz complete</span>
                     <span>You scored...</span>
                 </h1>
             </div>
@@ -47,7 +47,7 @@
                 </li>
             </ul>
             <div class="flex flex-col card w-full result-card items-center" v-else>
-                <div class="category">
+                <div class="category gap-2 md:gap-4 flex flex-row items-center">
                     <img :src="getCategoryIcon(category)" :alt="category">
                     <p>{{ category }}</p>
                 </div>
@@ -328,13 +328,6 @@ export default {
     background-color: #FFFFFF;
     box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
     border-radius: 24px;
-
-    .category {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 24px;
-    }
 
     .category > p {
         text-transform: capitalize;
