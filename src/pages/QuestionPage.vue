@@ -158,15 +158,23 @@ export default {
             if (this.showResult) {
                 this.onPlayAgain();
                 return;
+            } else if (this.readyToProceed) {
+                this.onNextQuestion();
+                return;
+            } else {
+                this.onSubmit();
             }
-            this.onSubmit();
         },
-        onReadyForNextQuestion() {
+        onNextQuestion() {
             this.selectedAnswer = null;
             this.currentQuestion++;
             this.readyToProceed = false;
             this.isCorrect = null;
             this.questionAnswered = false;
+            if (this.currentQuestion === this.totalQuestions + 1) {
+                this.showResult = true; 
+                return;
+            }
         },
         onSubmit() {
             // Calculate the current score
@@ -175,10 +183,6 @@ export default {
                 this.isCorrect = true;
             } else {
                 this.isCorrect = false;
-            }
-            if (this.currentQuestion === this.totalQuestions) {
-                this.showResult = true; 
-                return;
             }
             this.questionAnswered = true;
             this.readyToProceed = true;
