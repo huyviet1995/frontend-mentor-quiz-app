@@ -3,7 +3,7 @@
         class="flex items-center p-4"
         :class="{'justify-end': !category, 'justify-between': category}"
     >
-        <nav v-if="category" class="flex flex-row gap-6 items-center">
+        <nav v-if="category" class="flex flex-row gap-2 md:gap-6 items-center">
             <img :src="categoryIcon" alt="">
             <h1>{{ categoryTitle }}</h1>
         </nav>
@@ -69,6 +69,10 @@ nav h1 {
 @media screen and (max-width: 768px) {
     header {
         padding: 24px 24px;
+    }
+
+    nav h1 {
+        font-size: 18px;
     }
 }
 </style>
