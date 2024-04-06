@@ -112,6 +112,12 @@ p {
             font-size: 40px;
         }
     }
+    container p {
+        font-style: italic;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+    }
 }
 
 </style>
