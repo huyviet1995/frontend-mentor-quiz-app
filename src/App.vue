@@ -47,6 +47,7 @@ export default {
   }
   .page-container {
     padding: 0px;
+    gap: 32px;
   }
 }
 

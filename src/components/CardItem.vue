@@ -1,5 +1,5 @@
 <template>
-    <div
+    <container
         class="container flex flex-row gap-4 items-center rounded-lg cursor-pointer"
         v-bind="$attrs"
         @click="onCardClick"
@@ -10,7 +10,7 @@
         <div class="append-icon">
             <slot name="appendIcon" />
         </div>
-    </div>
+    </container>
 </template>
 
 <script>
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.container {
+container {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -68,7 +68,7 @@ export default {
     flex-grow: 0;
 }
 
-.container h2 {
+container h2 {
     font-style: normal;
     font-weight: 500;
     font-size: 28px;
@@ -79,7 +79,7 @@ export default {
     background: #fff;
 }
 
-.container .append-icon {
+container .append-icon {
     align-self: center;
     margin-left: auto;
     background-color: #fff;
@@ -87,6 +87,19 @@ export default {
 
 .append-icon * {
     background-color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    container {
+        width: 100% !important;
+        height: 64px !important;
+        h2 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 100%;
+        }
+    }
 }
 
 </style>
