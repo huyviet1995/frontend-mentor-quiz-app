@@ -121,6 +121,9 @@ export default {
                 return 'Submit Answer';
             }
         },
+        correctAnswerId() {
+            return this.question.options.findIndex(option => option === this.question.answer);
+        }
     },
     methods: {
         getCardItemClassName(index) {
@@ -137,13 +140,12 @@ export default {
             return className;
         },
         getCardItemIcon(index) {
-            if (this.selectedAnswer !== index) {
-                return undefined;
-            }
-            if (this.isCorrect === true) {
+            if (this.isCorrect === true && this.selectedAnswer === index) {
                 return "/images/icon-correct.svg";
-            } else if (this.isCorrect === false) {
+            } else if (this.isCorrect === false && this.selectedAnswer === index) {
                 return "/images/icon-incorrect.svg";
+            } else if (this.isCorrect === false && index === this.correctAnswerId) {
+                return "/images/icon-correct.svg";
             }
         },
         onAnswer(id) {
@@ -168,7 +170,7 @@ export default {
         },
         onSubmit() {
             // Calculate the current score
-            if (this.question.options[this.selectedAnswer] === this.question.answer) {
+            if (this.correctAnswerId === this.selectedAnswer) {
                 this.currentScore++;
                 this.isCorrect = true;
             } else {
