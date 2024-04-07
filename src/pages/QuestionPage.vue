@@ -41,7 +41,7 @@
                             </div>
                         </template>
                         <template v-slot:appendIcon v-if="questionAnswered && getCardItemIcon(index)">
-                            <img :src="getCardItemIcon(index)" alt="append-icon">
+                            <img :src="getCardItemIcon(index)" alt="append-icon" class="append-icon">
                         </template>
                     </card-item>
                 </li>
@@ -476,6 +476,10 @@ export default {
         font-style: italic;
         font-weight: 400;
         font-size: 14px;
+    }
+    container .append-icon {
+        width: 32px;
+        height: 32px; 
     }
 }
 
