@@ -317,7 +317,7 @@ export default {
 }
 
 .result-card * {
-    background-color: #fff;
+    background-color: var(--pure-white);
 }
 
 .result-card {
@@ -325,7 +325,7 @@ export default {
     gap: 40px;
     min-width: 564px;
     height: 388px;
-    background-color: #FFFFFF;
+    background-color: var(--pure-white);
     box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
     border-radius: 24px;
 
@@ -342,9 +342,8 @@ export default {
         font-style: normal;
         font-weight: 500;
         font-size: 144px;
-        line-height: 100%;
-        /* identical to box height, or 144px */
         color: var(--dark-navy);
+        line-height: 100%;
     }
     .out-of {
         font-style: normal;
@@ -376,8 +375,6 @@ export default {
     font-weight: 500;
     font-size: 28px;
     line-height: 100%;
-    /* identical to box height, or 28px */
-
     color: #ffffff;
     &[disabled] {
         background: linear-gradient(
@@ -438,7 +435,6 @@ export default {
         padding: 32px;
         gap: 16px;
         height: 242px;
-        background: #FFFFFF;
         box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
         border-radius: 12px;
 
