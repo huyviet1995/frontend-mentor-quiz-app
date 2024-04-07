@@ -1,3 +1,18 @@
+export const getIconBackground = (category) => {
+    switch (category) {
+        case "html":
+            return "var(--html-background)";
+        case "css":
+            return "var(--css-background)";
+        case "javascript":
+            return "var(--js-background)";
+        case "accessibility":
+            return "var(--accessibility-background)";
+        default:
+            return "var(--card-background)";
+    }
+}
+
 export const getCategoryIcon = (category) => {
     switch (category) {
         case 'html':

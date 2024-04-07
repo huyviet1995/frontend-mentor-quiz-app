@@ -48,7 +48,7 @@
             </ul>
             <div class="flex flex-col card w-full result-card items-center" v-else>
                 <div class="category gap-2 md:gap-4 flex flex-row items-center">
-                    <img :src="getCategoryIcon(category)" :alt="category">
+                    <icon-wrapper :category="category" />
                     <p>{{ category }}</p>
                 </div>
                 <p class="total-score">{{ currentScore }}</p>
@@ -68,9 +68,10 @@
 import questions from "@/utils/questions.js";
 import CardItem from "@/components/CardItem.vue";
 import { getCategoryIcon } from "@/utils/category";
+import IconWrapper from "@/components/IconWrapper.vue";
 export default {
     name: "QuestionPage",
-    components: { CardItem },
+    components: { CardItem, IconWrapper },
     props: {
         title: {
             type: String,

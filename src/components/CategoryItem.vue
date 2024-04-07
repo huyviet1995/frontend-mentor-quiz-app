@@ -1,8 +1,9 @@
 <template>
-    <card-item :title="title" :icon="icon" @click="onClick" :icon-background="iconBackground" />
+    <card-item :title="title" :icon="icon" @click="onClick" :category="slug" />
 </template>
 <script>
 import CardItem from "@/components/CardItem.vue";
+import { getIconBackground } from "@/utils/category";
 export default {
     name: "CategoryItem",
     components: { CardItem },
@@ -26,18 +27,7 @@ export default {
     },
     computed: {
         iconBackground() {
-            switch (this.slug) {
-                case "html":
-                    return "var(--html-background)";
-                case "css":
-                    return "var(--css-background)";
-                case "javascript":
-                    return "var(--js-background)";
-                case "accessibility":
-                    return "var(--accessibility-background)";
-                default:
-                    return "var(--card-background)";
-            }
+            return getIconBackground(this.slug);
         }
     }
 };

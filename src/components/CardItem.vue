@@ -4,9 +4,7 @@
         v-bind="$attrs"
         @click="onCardClick"
     >
-        <div class="icon-container flex items-center justify-center" v-if="icon" :style="{ backgroundColor: iconBackground }">
-            <img :src="icon" alt="alt" />
-        </div>
+        <icon-wrapper v-if="icon" :category="category" />
         <slot v-else name="icon" />
         <h2>{{ title }}</h2>
         <div class="append-icon">
@@ -16,8 +14,10 @@
 </template>
 
 <script>
+import IconWrapper from "@/components/IconWrapper.vue";
 export default {
     name: "CardItem",
+    components: { IconWrapper },
     props: {
         title: {
             type: String,
@@ -40,7 +40,7 @@ export default {
             required: false,
             default: false,
         },
-        iconBackground: {
+        category: {
             type: String,
             required: false,
             default: "",
@@ -73,16 +73,6 @@ container {
     flex: none;
     order: 0;
     flex-grow: 0;
-}
-
-container .icon-container {
-    width: 56px;
-    height: 56px;
-    border-radius: 8px;
-    img {
-        background: none;
-        width: 40px;
-    }
 }
 
 container h2 {
@@ -135,13 +125,6 @@ container .append-icon {
         }
     }
 
-    container .icon-container {
-        width: 40px;
-        height: 40px;
-        img {
-            width: 28px;
-        }
-    }
 }
 
 </style>

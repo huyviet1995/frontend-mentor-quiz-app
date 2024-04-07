@@ -4,7 +4,7 @@
         :class="{'justify-end': !category, 'justify-between': category}"
     >
         <nav v-if="category" class="flex flex-row gap-2 md:gap-6 items-center">
-            <img :src="categoryIcon" alt="">
+            <icon-wrapper :category="category" />
             <h1>{{ categoryTitle }}</h1>
         </nav>
         <switch-component
@@ -27,10 +27,11 @@
 
 <script>
 import SwitchComponent from "@/components/Switch.vue";
-import { getCategoryIcon, categories } from "@/utils/category";
+import { getCategoryIcon, categories, getIconBackground } from "@/utils/category";
+import IconWrapper from "./IconWrapper.vue";
 export default {
     name: "HeaderComponent",
-    components: { SwitchComponent },
+    components: { SwitchComponent, IconWrapper },
     props: {
         category: {
             type: String,
@@ -49,6 +50,9 @@ export default {
         },
         categoryTitle() {
             return categories.find(category => category.slug === this.category)?.title;
+        },
+        iconBackground() {
+            return getIconBackground(this.category); 
         }
     },
     methods: {
