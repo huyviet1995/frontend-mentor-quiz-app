@@ -13,6 +13,6 @@ module.exports = {
         "vue"
     ],
     "rules": {
-        'indent': ['warning', 4]
+        'indent': [1, 4]
     }
 };
