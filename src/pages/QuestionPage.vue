@@ -57,8 +57,8 @@
             <button class="mt-6" @click="onClick">
                 {{ buttonLabel }}
             </button>
-            <p v-if="selectedAnswer === null && !showResult && !readyToProceed" class="error mt-4">
-                <img v-if="error" src="/images/icon-error.svg" alt="icon-error" class="mr-4">{{ error }}
+            <p v-if="selectedAnswer === null && !showResult && !readyToProceed" class="error mt-4 flex flex-row gap-1 md:gap-2 items-center justify-center">
+                <img v-if="error" src="/images/icon-error.svg" alt="icon-error">{{ error }}
             </p>
         </div>
     </container>
@@ -452,6 +452,15 @@ export default {
             font-style: normal;
             font-weight: 400;
             font-size: 18px;
+        }
+    }
+
+    container.page-container .error {
+        font-size: 18px;
+        line-height: 100%;
+        color: var(--red);
+        img {
+            width: 32px;
         }
     }
 
