@@ -78,6 +78,7 @@ container {
 container .icon-container {
     width: 56px;
     height: 56px;
+    border-radius: 8px;
     img {
         background: none;
         width: 40px;
@@ -131,6 +132,14 @@ container .append-icon {
             font-weight: 500;
             font-size: 18px;
             line-height: 100%;
+        }
+    }
+
+    container .icon-container {
+        width: 40px;
+        height: 40px;
+        img {
+            width: 28px;
         }
     }
 }
