@@ -1,5 +1,5 @@
 <template>
-    <card-item :title="title" :icon="icon" @click="onClick" />
+    <card-item :title="title" :icon="icon" @click="onClick" :icon-background="iconBackground" />
 </template>
 <script>
 import CardItem from "@/components/CardItem.vue";
@@ -24,35 +24,21 @@ export default {
             required: true,
         }
     },
+    computed: {
+        iconBackground() {
+            switch (this.slug) {
+                case "html":
+                    return "var(--html-background)";
+                case "css":
+                    return "var(--css-background)";
+                case "javascript":
+                    return "var(--js-background)";
+                case "accessibility":
+                    return "var(--accessibility-background)";
+                default:
+                    return "var(--card-background)";
+            }
+        }
+    }
 };
 </script>
-
-<style scoped lang="scss">
-.container {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px;
-    gap: 32px;
-    width: 564px;
-    height: 96px;
-    background: #ffffff;
-    box-shadow: var(--box-shadow);
-    border-radius: 24px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-
-    h2 {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 28px;
-        line-height: 100%;
-        color: var(--dark-navy);
-        flex: none;
-        order: 1;
-        flex-grow: 0;
-    }
-}
-</style>

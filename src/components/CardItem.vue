@@ -4,7 +4,9 @@
         v-bind="$attrs"
         @click="onCardClick"
     >
-        <img v-if="icon" :src="icon" :width="32" alt="alt" />
+        <div class="icon-container flex items-center justify-center" v-if="icon" :style="{ backgroundColor: iconBackground }">
+            <img :src="icon" alt="alt" />
+        </div>
         <slot v-else name="icon" />
         <h2>{{ title }}</h2>
         <div class="append-icon">
@@ -38,6 +40,11 @@ export default {
             required: false,
             default: false,
         },
+        iconBackground: {
+            type: String,
+            required: false,
+            default: "",
+        }
     },
     methods: {
         onCardClick() {
@@ -60,12 +67,21 @@ container {
     gap: 32px;
     width: 564px;
     height: 96px;
-    background: #ffffff;
+    background: var(--card-background);
     box-shadow: var(--box-shadow);
     border-radius: 24px;
     flex: none;
     order: 0;
     flex-grow: 0;
+}
+
+container .icon-container {
+    width: 56px;
+    height: 56px;
+    img {
+        background: none;
+        width: 40px;
+    }
 }
 
 container h2 {
@@ -76,7 +92,7 @@ container h2 {
     color: var(--dark-navy);
     flex: none;
     flex-grow: 0;
-    background: #fff;
+    background: none;
 }
 
 container .append-icon {
@@ -105,7 +121,6 @@ container .append-icon {
 @media screen and (max-width: 768px) {
     container.container {
         gap: 16px;
-        background: #FFFFFF;
         box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
         padding: 12px;
         gap: 16px;

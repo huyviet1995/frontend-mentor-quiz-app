@@ -1,5 +1,5 @@
 <template>
-    <div :class="{ 'dark': darkMode }">
+    <div>
         <header-component 
             :category="currentCategory" 
             @update:dark-mode="handleUpdateDarkmode"
@@ -24,7 +24,12 @@ export default {
             this.currentCategory = category;
         },
         handleUpdateDarkmode(checked) {
-            this.darkMode = checked; 
+            const appElement = document.getElementById('app');
+            if (checked)  {
+                appElement.classList.add('dark');
+            } else {
+                appElement.classList.remove('dark');
+            }
         }
     },
     watch: {
@@ -50,10 +55,18 @@ export default {
     --background: #f4f6fa;
     --grey-navy: #626c7f;
     --purple: #a729f5;
+    --card-background: #fff;
+    --html-background: #FFF1E9;
+    --css-background: #E0FDEF;
+    --js-background: #EBF0FF;
+    --accessibility-background: #F6E7FF;
 }
 
 .dark {
     --background: #1e1e1e;
+    --dark-navy: #fff;
+    --grey-navy: #ABC1E1;
+    --card-background: #3B4D66;
 }
 #app {
     font-family: "Rubik", Avenir, Helvetica, Arial, sans-serif;
