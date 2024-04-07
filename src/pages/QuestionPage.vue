@@ -208,13 +208,13 @@ export default {
 <style scoped lang="scss">
 
 .correct {
-    background: #FFFFFF;
+    background: var(--pure-white);
     border: 3px solid var(--green);
     box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
 }
 
 .incorrect {
-    background: #FFFFFF;
+    background: var(--pure-white);
     border: 3px solid var(--red);
     box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
 }
@@ -261,7 +261,7 @@ export default {
 }
 
 .page-container .letter {
-    background: var(--background);
+    background: var(--letter-background);
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -277,7 +277,7 @@ export default {
     font-size: 28px;
     line-height: 100%;
     /* identical to box height, or 28px */
-    color: var(--grey-navy);
+    color: var(--letter-grey-navy);
 
     &.selected {
         background: var(--purple);
@@ -390,7 +390,7 @@ export default {
 }
 
 .page-container img {
-    background-color: #fff;
+    background-color: var(--pure-white);
 }
 
 .page-container .error {
