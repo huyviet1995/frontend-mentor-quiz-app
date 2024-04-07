@@ -57,6 +57,7 @@ export default {
     --grey-navy: #626c7f;
     --letter-grey-navy: #626c7f;
     --purple: #a729f5;
+    --purple-hover: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), #A729F5;
     --card-background: #fff;
     --html-background: #FFF1E9;
     --css-background: #E0FDEF;

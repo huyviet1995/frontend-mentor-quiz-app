@@ -385,6 +385,9 @@ export default {
             ),
             var(--purple);
     }
+    &:hover {
+        background: var(--purple-hover);
+    }
 }
 
 .page-container img {
